@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Prueba</title>
+<script type="text/javascript">
+    var cantidad_imagenes = 4;
+</script>
+<style>
+    #flechaizquierda {
+        width: 30px;
+        position: relative;
+        float: left;
+        margin-top: -25%;
+        margin-left: 2%;
+    }
+    #flechaderecha {
+        width: 30px;
+        position: relative;
+        float: right;
+        margin-top: -25%;
+        margin-right: 2%;
+    }
+    .imagensecuancia {
+        width: 100%;
+
+    }
+    #divimagensecuancia {
+        
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+    }
+    #secuencia {
+        width: 50%;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+    }
+</style>
+</head>
+<body>
+    hola hola <br>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi placeat nam distinctio quis, autem culpa praesentium excepturi vero animi qui beatae, ipsam eaque expedita sunt labore enim. Rem, fugit eum!
+<div id="secuencia">
+    <div id="divimagensecuancia">
+        <img src="https://i.ytimg.com/vi/FuHcna7q15U/maxresdefault.jpg" class="imagensecuancia" id="view_1" data="1" style="display:block;" />
+        <img src="https://www.nationalgeographic.com.es/medio/2018/02/27/playa-de-isuntza-lekeitio__1280x720.jpg" class="imagensecuancia" id="view_2" data="2" style="display:none;" />
+        <img src="https://i.ytimg.com/vi/hW9PUzl7j9w/maxresdefault.jpg" class="imagensecuancia" id="view_3" data="3" style="display:none;" />
+        <img src="https://static.vix.com/es/sites/default/files/styles/4x3/public/imj/p/paisajes-espectaculares-del-mundo-1.jpg?itok=LKhepPI-" class="imagensecuancia" id="view_4" data="4" style="display:none;" />
+    </div>
+    <a href="javascript:void(0);" onclick="Anterior()"><img src="flecha_izquierda.jpg" alt="Anterior" id="flechaizquierda"></a> 
+    <a href="javascript:void(0);" onclick="Siguiente()"><img src="flecha_derecha.jpg" alt="Siguiente" id="flechaderecha"></a>
+</div>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus delectus qui quisquam ex itaque error dicta et expedita debitis fuga suscipit adipisci aliquam fugiat earum nisi, dolorum porro, ratione similique?
+<!-- llamamos al jquery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<!-- aqui le decimos que queremos hacer -->
+<script type="text/javascript">
+    function Siguiente()
+    {
+        var data = 0;
+        var id = "";
+        for (i=1; i <= cantidad_imagenes; i++)
+        {
+            var display = $('#view_'+i).css('display');
+            if (display != 'none')
+            {
+                data =  parseFloat($('#view_'+i).attr('data'));
+                id = "view_"+i;
+                break;                                      
+            }
+            
+        }
+        var new_data = 0;
+        if (data >= cantidad_imagenes)
+        {
+            new_data = 1;   
+        }else{
+            new_data = data + 1; 
+        }
+        <!-- ocultamos -->
+        $('#'+id).css('display', 'none');
+        $('#view_'+new_data).css('display', 'block');
+    }
+    
+    function Anterior()
+    {
+        $(document).ready(function() { 
+            var data = 0;
+            var id = "";
+            for (i=1; i <= cantidad_imagenes; i++)
+            {
+                var display = $('#view_'+i).css('display');
+                if (display != 'none')
+                {
+                    data =  parseFloat($('#view_'+i).attr('data'));
+                    id = "view_"+i;
+                    break;                                      
+                }
+            }
+            //obetenemos el nuevo valor para luego mostrar su img
+            calculo_data = data - 1;
+            var new_data = 0;
+            if (calculo_data < 1)
+            {
+                new_data = cantidad_imagenes;   
+            }else{
+                new_data = data - 1; 
+            }
+            <!-- ocultamos -->
+            $('#'+id).css('display', 'none');
+            $('#view_'+new_data).css('display', 'block');
+        }); 
+    }
+</script>
+</body>
+</html>
