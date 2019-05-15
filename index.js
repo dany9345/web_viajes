@@ -53,5 +53,5 @@ function Anterior()
 }
 
 window.onload = function() {
-    var intevalo = setInterval('Siguiente()',10000);
+    var intevalo = setInterval('Siguiente()',5000);
 }
