@@ -1,119 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Prueba</title>
-<script type="text/javascript">
-    var cantidad_imagenes = 4;
-</script>
-<style>
-    #flechaizquierda {
-        width: 30px;
-        position: relative;
-        float: left;
-        margin-top: -25%;
-        margin-left: 2%;
-    }
-    #flechaderecha {
-        width: 30px;
-        position: relative;
-        float: right;
-        margin-top: -25%;
-        margin-right: 2%;
-    }
-    .imagensecuancia {
-        width: 100%;
-
-    }
-    #divimagensecuancia {
-        
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
-        border: 0px;
-    }
-    #secuencia {
-        width: 50%;
-        margin: 0px;
-        padding: 0px;
-        border: 0px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="prueba.css" media="only screen and (min-width: 1000px)"> <!-- Enlace Css -->
+    <link rel="stylesheet" href="movil.css" media="only screen and (max-width: 1000px)"> <!-- Enlace Css movil -->
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/> <!-- Favicon -->
+    <script type="text/javascript" src="prueba.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <title>Con Destino Mundo</title>
+    <script type="text/javascript">
+        var cantidad_imagenes = 4;
+    </script>
 </head>
 <body>
-    hola hola <br>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi placeat nam distinctio quis, autem culpa praesentium excepturi vero animi qui beatae, ipsam eaque expedita sunt labore enim. Rem, fugit eum!
-<div id="secuencia">
-    <div id="divimagensecuancia">
-        <img src="https://i.ytimg.com/vi/FuHcna7q15U/maxresdefault.jpg" class="imagensecuancia" id="view_1" data="1" style="display:block;" />
-        <img src="https://www.nationalgeographic.com.es/medio/2018/02/27/playa-de-isuntza-lekeitio__1280x720.jpg" class="imagensecuancia" id="view_2" data="2" style="display:none;" />
-        <img src="https://i.ytimg.com/vi/hW9PUzl7j9w/maxresdefault.jpg" class="imagensecuancia" id="view_3" data="3" style="display:none;" />
-        <img src="https://static.vix.com/es/sites/default/files/styles/4x3/public/imj/p/paisajes-espectaculares-del-mundo-1.jpg?itok=LKhepPI-" class="imagensecuancia" id="view_4" data="4" style="display:none;" />
+    <div class="cabecera">
+        <div class="botonescabecera">
+            <div class="botoncabecera"><a href="index.html">Inicio</a></div>
+            <div class="botoncabecera"><a href="europa.html">Europa</a></div>
+            <div class="botoncabecera"><a href="america.html">América</a></div>
+            <div class="botoncabecera"><a href="asia.html">Asia</a></div>
+        </div>
+        <div id="header">
+            <ul class="nav" id="nolista">
+                <li id="nolista"><a href="">Menu</a>
+                    <ul id="nolista">
+                        <li id="lista"><a href="index.html">Inicio</a></li>
+                        <li id="lista"><a href="europa.html">Europa</a></li>
+                        <li id="lista"><a href="america.html">América</a></li>
+                        <li id="lista"><a href="asia.html">Asia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <a href="javascript:void(0);" onclick="Anterior()"><img src="flecha_izquierda.jpg" alt="Anterior" id="flechaizquierda"></a> 
-    <a href="javascript:void(0);" onclick="Siguiente()"><img src="flecha_derecha.jpg" alt="Siguiente" id="flechaderecha"></a>
-</div>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus delectus qui quisquam ex itaque error dicta et expedita debitis fuga suscipit adipisci aliquam fugiat earum nisi, dolorum porro, ratione similique?
-<!-- llamamos al jquery -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<!-- aqui le decimos que queremos hacer -->
-<script type="text/javascript">
-    function Siguiente()
-    {
-        var data = 0;
-        var id = "";
-        for (i=1; i <= cantidad_imagenes; i++)
-        {
-            var display = $('#view_'+i).css('display');
-            if (display != 'none')
-            {
-                data =  parseFloat($('#view_'+i).attr('data'));
-                id = "view_"+i;
-                break;                                      
-            }
-            
-        }
-        var new_data = 0;
-        if (data >= cantidad_imagenes)
-        {
-            new_data = 1;   
-        }else{
-            new_data = data + 1; 
-        }
-        <!-- ocultamos -->
-        $('#'+id).css('display', 'none');
-        $('#view_'+new_data).css('display', 'block');
-    }
-    
-    function Anterior()
-    {
-        $(document).ready(function() { 
-            var data = 0;
-            var id = "";
-            for (i=1; i <= cantidad_imagenes; i++)
-            {
-                var display = $('#view_'+i).css('display');
-                if (display != 'none')
-                {
-                    data =  parseFloat($('#view_'+i).attr('data'));
-                    id = "view_"+i;
-                    break;                                      
-                }
-            }
-            //obetenemos el nuevo valor para luego mostrar su img
-            calculo_data = data - 1;
-            var new_data = 0;
-            if (calculo_data < 1)
-            {
-                new_data = cantidad_imagenes;   
-            }else{
-                new_data = data - 1; 
-            }
-            <!-- ocultamos -->
-            $('#'+id).css('display', 'none');
-            $('#view_'+new_data).css('display', 'block');
-        }); 
-    }
-</script>
+    <div class="cuerpo">
+        <div id="contenido">
+            <div id="secuencia">
+                <div id="divimagensecuancia">
+                    <div id="view_1" data="1" style="display:block;">
+                    <img src="https://i.ytimg.com/vi/FuHcna7q15U/maxresdefault.jpg" class="imagensecuancia"  />
+                    <div id="textoimagenes">Lago bonito</div>
+                    </div>
+                    <div id="view_2" data="2" style="display:none;">
+                    <img src="https://www.nationalgeographic.com.es/medio/2018/02/27/playa-de-isuntza-lekeitio__1280x720.jpg" class="imagensecuancia"  />
+                    <div id="textoimagenes">Playa bonita</div>
+                    </div>
+                    <div id="view_3" data="3" style="display:none;">
+                    <img src="https://i.ytimg.com/vi/hW9PUzl7j9w/maxresdefault.jpg" class="imagensecuancia"  />
+                    <div id="textoimagenes">Puesta de sol bonita</div>
+                    </div>
+                    <div id="view_4" data="4" style="display:none;" >
+                    <img src="https://static.vix.com/es/sites/default/files/styles/4x3/public/imj/p/paisajes-espectaculares-del-mundo-1.jpg?itok=LKhepPI-" class="imagensecuancia" />
+                    <div id="textoimagenes">Montaña bonita</div>
+                    </div>
+                </div>
+                <a href="javascript:void(0);" onclick="Anterior()"><img src="flecha_izquierda.jpg" alt="Anterior" id="flechaizquierda"></a> 
+                <a href="javascript:void(0);" onclick="Siguiente()"><img src="flecha_derecha.jpg" alt="Siguiente" id="flechaderecha"></a>
+            </div>
+            <h1 id="titulobienvenida">Bienvenidos a Con Destino Mundo.</h1> <br>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit eos laborum est, repellat maxime delectus placeat deleniti ipsa illo consequuntur veritatis ipsum commodi ut, quaerat mollitia rem impedit? Recusandae, minima? <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione expedita eius quisquam? Accusantium corporis obcaecati nam animi laboriosam at quam voluptatum ipsa! Impedit officiis perspiciatis vero quod vel at amet! <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad omnis, cumque sapiente cupiditate in illum placeat error quo culpa, dolorem velit provident fugit optio minima accusantium harum nobis nulla quas? <br>
+        </div>
+        <div id="menuizquierdo">
+            <h1 id="titulobienvenida">Este es el menú izquierdo</h1> <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum autem nulla modi quidem eveniet iusto optio unde reprehenderit quasi explicabo ullam quia, adipisci sequi voluptatum soluta, dicta totam dignissimos! Minima.
+        </div>
+    </div>
+    <div class="pie">&copy; 2019 Con Destino Mundo
+        <img id="iconoredsocial" src="facebook.png" alt="" width="35">
+        <img id="iconoredsocial" src="instagram.png" alt="" width="35">
+        <img id="iconoredsocial" src="twitter.png" alt="" width="35">
+    </div>
 </body>
 </html>
